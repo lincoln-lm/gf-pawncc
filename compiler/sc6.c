@@ -1011,7 +1011,7 @@ SC_FUNC int assemble(FILE *fout,FILE *fin)
       if (constptr->value>0) {
         assert(strlen(constptr->name)>0);
         func.address=0;
-        func.nameofs=hashStr(sym->name);
+        func.nameofs=hashStr(constptr->name);
         #if BYTE_ORDER==BIG_ENDIAN
           align32(&func.address);
           align32(&func.nameofs);
@@ -1033,7 +1033,13 @@ SC_FUNC int assemble(FILE *fout,FILE *fin)
       assert((sym->usage & uDEFINE)!=0);
       assert(sym->vclass==sGLOBAL);
       func.address=sym->addr;
-      func.nameofs=hashStr(sym->name);
+      // specify variable hash for the sake of matching
+      // first character is skipped to allow custom ordering
+      if (strncmp("_x", sym->name+1, 2) == 0) {
+        func.nameofs=strtoll(sym->name+3, NULL, 16);
+      } else {
+        func.nameofs=hashStr(sym->name);
+      }
       #if BYTE_ORDER==BIG_ENDIAN
         align32(&func.address);
         align32(&func.nameofs);
@@ -1053,7 +1059,7 @@ SC_FUNC int assemble(FILE *fout,FILE *fin)
     if ((constptr->value & PUBLICTAG)!=0) {
       assert(strlen(constptr->name)>0);
       func.address=constptr->value & TAGMASK;
-      func.nameofs=hashStr(sym->name);
+      func.nameofs=hashStr(constptr->name);
       #if BYTE_ORDER==BIG_ENDIAN
         align32(&func.address);
         align32(&func.nameofs);
