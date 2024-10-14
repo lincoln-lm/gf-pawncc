@@ -512,7 +512,8 @@ static int matchsequence(char *start,char *end,const char *pattern,
          * values (the peephole optimizer may create such variants)
          */
         ucell v=getparamvalue(str,&ptr);
-        if (*ptr>' ' || v>=(1<<((sizeof(cell)*4)-1)) && v<=~((1<<(sizeof(cell)*4)-1)))
+        // TODO: is this actually correct in all cases?
+        if (*ptr>' ' || (v<(1<<((sizeof(cell)*4)-1)) && v>~((1<<(sizeof(cell)*4)-1))))
           return FALSE;
         /* reconvert the value to a string (without signs or expressions) */
         ptr=itoh(v);
