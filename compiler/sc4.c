@@ -972,9 +972,9 @@ SC_FUNC void modstk(int delta)
       code_idx+=opcodes(1);
     } else {
 #endif
-      stgwrite("\tstack ");
-      outval(delta,TRUE,TRUE);
-      code_idx+=opcodes(1)+opargs(1);
+      stgwrite("\tstack.p ");
+      outval(delta,FALSE,TRUE);
+      code_idx+=opcodes(1);
 #if !defined AMX_NO_PACKED_OPC
     } /* if */
 #endif
