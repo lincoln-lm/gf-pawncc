@@ -989,7 +989,7 @@ SC_FUNC int assemble(FILE *fout,FILE *fin)
       } /* if */
       assert(sym->vclass==sGLOBAL);
       func.address=0;
-      func.nameofs=hashStr(sym->name);
+      func.nameofs=hashStr(alias);
       #if BYTE_ORDER==BIG_ENDIAN
         align32(&func.address);
         align32(&func.nameofs);
