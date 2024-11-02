@@ -477,7 +477,7 @@ int pc_compile(int argc, char *argv[])
   setopt(argc,argv,outfname,errfname,incfname,reportname,codepage);
   strcpy(binfname,outfname);
   ptr=get_extension(binfname);
-  if (ptr!=NULL && stricmp(ptr,".asm")==0)
+  if (ptr!=NULL && strcasecmp(ptr,".asm")==0)
     set_extension(binfname,".amx",TRUE);
   else
     set_extension(binfname,".amx",FALSE);

@@ -100,7 +100,7 @@
 #if !defined assert_static
   /* see "Compile-Time Assertions" by Ralf Holly,
    * C/C++ Users Journal, November 2004
-   * with modification from Søren Hannibal
+   * with modification from Sï¿½ren Hannibal
    */
   #define assert_static(e) \
     do { \
@@ -466,7 +466,7 @@ int AMXAPI amx_UTF8Put(char *string, char **endptr, int maxchars, cell value);
   #define amx_AlignCell(v) amx_Align16(v)
 #elif PAWN_CELL_SIZE==32
   #define amx_AlignCell(v) amx_Align32(v)
-#elif PAWN_CELL_SIZE==64 && (defined _I64_MAX || defined HAVE_I64)
+#elif PAWN_CELL_SIZE==64
   #define amx_AlignCell(v) amx_Align64(v)
 #else
   #error Unsupported cell size
