@@ -1427,12 +1427,6 @@ static void setconfig(char *root)
     /* add the default "include" directory */
     #if defined __WIN32__ || defined _WIN32
       GetModuleFileName(NULL,path,_MAX_PATH);
-    #elif defined __LINUX__ || defined __FreeBSD__ || defined __OpenBSD__
-      /* see www.autopackage.org for the BinReloc module */
-      br_init_lib(NULL);
-      ptr=br_find_exe("/opt/Pawn/bin/pawncc");
-      strlcpy(path,ptr,sizeof path);
-      free(ptr);
     #else
       if (root!=NULL)
         strlcpy(path,root,sizeof path); /* path + filename (hopefully) */
