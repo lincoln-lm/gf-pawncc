@@ -28,9 +28,6 @@
 #include <math.h>
 #include "lstring.h"
 #include "sc.h"
-#if defined __LINUX__ || defined __FreeBSD__ || defined __OpenBSD__
-  #include <sclinux.h>
-#endif
 
 #if defined FORTIFY
   #include <alloc/fortify.h>

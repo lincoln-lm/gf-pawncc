@@ -62,10 +62,6 @@
 
 #include "lstring.h"
 #include "sc.h"
-#if defined __LINUX__ || defined __FreeBSD__ || defined __OpenBSD__
-  #include <sclinux.h>
-  #include <binreloc.h> /* from BinReloc, see www.autopackage.org */
-#endif
 
 #include "svnrev.h"
 #define VERSION_STR "3.3." SVN_REVSTR

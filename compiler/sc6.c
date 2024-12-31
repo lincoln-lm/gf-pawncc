@@ -32,9 +32,6 @@
 #include "lstring.h"
 #include "sc.h"
 #include "../amx/amxdbg.h"
-#if defined __LINUX__ || defined __FreeBSD__ || defined __OpenBSD__
-  #include <sclinux.h>
-#endif
 
 
 static void append_dbginfo(FILE *fout);
