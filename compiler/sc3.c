@@ -2707,7 +2707,7 @@ static int constant(value *lval)
     int tag,lasttag=-1;
     val=litidx;
     do {
-      /* cannot call constexpr() here, because "staging" is already turned
+      /* cannot call constexpr_() here, because "staging" is already turned
        * on at this point */
       assert(staging);
       stgget(&index,&cidx);     /* mark position in code generator */
